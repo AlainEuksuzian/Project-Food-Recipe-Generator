@@ -20,6 +20,3 @@ step 7) implement a page where users can add what ingredients they have at home 
 
 step 8) implement a machine learning model to predict what food users will like (cluster grouping, predictive model)
 
-step 9) ????
-
-step 10) Sell the app for a quadrillion dollars or something I guess lol
