@@ -20,8 +20,15 @@ def login():
         password = form.password.data
         flash('the username is: {u}'.format(u=username))
         flash('the password is {p}'.format(p=password))
-        redirect('formTester')
+        return redirect('formTester')
     return render_template('login.jinja', form=form)
+
+
+@app.route('/formTester')
+def form_test():
+    return render_template('formTester.jinja')
+
+
 
 @app.route('/signup')
 def sign_up():
