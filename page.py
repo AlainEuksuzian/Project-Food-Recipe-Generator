@@ -1,31 +1,31 @@
-from flask import Flask , render_template
+from flask import Flask , render_template, flash, redirect
+from forms import Login, Signup
 import pandas as pd
 import requests
-
-
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'My_food_recipe_app'
+
 
 
 @app.route('/')
-def intro():
-    return """<h1> hello chef ! </h1>
-        <a href="/login">click here to login</a>
-"""
+@app.route('/home')
+def home_page():
+    return render_template('home.jinja')
 
-
-@app.route('/login')
+@app.route('/login', methods=['POST','GET'])
 def login():
-    return """
-    <form action="">
-        <b><label for="">username: </label></b><br>
-        <input type="text"><br><br>
+    form = Login()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+        flash('the username is: {u}'.format(u=username))
+        flash('the password is {p}'.format(p=password))
+        redirect('formTester')
+    return render_template('login.jinja', form=form)
 
-        <b><label for="">password: </label></b><br>
-        <input type="password"><br><br>
-
-        <input type="submit">
-
-    </form>"""
+@app.route('/signup')
+def sign_up():
+    return render_template('signup.jinja')
 
 @app.route('/recipe')
 def recipe():
@@ -34,7 +34,7 @@ def recipe():
     data = response.json()
     meal_data = data['meals'][0]
 
-    return render_template('recipe.html', 
+    return render_template('recipe.jinja', 
                            meal=meal_data['strMeal'], 
                            category=meal_data['strCategory'], 
                            area=meal_data['strArea'], 
@@ -46,4 +46,4 @@ def recipe():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

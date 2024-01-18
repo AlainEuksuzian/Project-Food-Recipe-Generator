@@ -1,0 +1,14 @@
+{% extends "base.jinja" %}
+
+
+{% block formTester %}
+{% with message =get_flashed_message() %}
+{% if message %}
+<ul>
+{% for content in message %}
+<li>{{content}}</li>
+{% endfor %}
+{% endif %}
+</ul>
+{% endwith %}
+{% endblock formTester %}
