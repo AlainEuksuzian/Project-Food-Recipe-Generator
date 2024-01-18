@@ -10,9 +10,9 @@ step 1) Create an API that connects to a public food database website that conta
 
 step 2) Randomly get the food recipe, instructions to cook, and a picture of the final food using the request library, pandas, and Python image, the new recipe should be loaded upon every refresh of the page (DONE)
 
-step 3) Add a homepage, login page, and other pages to complete a full-stack app (ONGOING)
+step 3) Add a homepage, login page, and other pages to complete a full-stack app  (DONE)
 
-step 4) add SQLite database using upvote and downvote to understand user preference also a user table
+step 4) add SQLite database using upvote and downvote to understand user preference also a user table (ONGOING)
 
 step 6) Add Bootstrap and CSS design to modernize the website
 
