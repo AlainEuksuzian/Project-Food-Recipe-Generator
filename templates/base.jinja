@@ -9,12 +9,15 @@
     <div class="topnav">
   <a class="active" href="{{url_for('home_page')}}">Home</a>
   <a href="{{url_for('sign_up')}}" class="login">signup</a>
-  <a href="{{url_for('login')}}" class="singup">login</a>
+  <a href="{{url_for('recipe')}}" class="singup">recipe</a>
+  <a href="{{url_for('login')}}" class="loginBtn">login </a>
 </div>
 {% block login %}{% endblock login %}
 {% block signup %}{% endblock signup %}
 {% block homepage %}{% endblock homepage %}
 {% block formTester %}{% endblock formTester %}
+{% block recipe %}{% endblock recipe %}
+
 </body>
 <style>
 

@@ -2,8 +2,15 @@ from flask import Flask , render_template, flash, redirect
 from forms import Login, Signup
 import pandas as pd
 import requests
+from models import db, Users, Meal
+from flask_migrate import Migrate
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\Alain E\\Desktop\\helloWorld\\database.db'
 app.config['SECRET_KEY'] = 'My_food_recipe_app'
+
+db.init_app(app)
+migrate = Migrate(app,db)
 
 
 

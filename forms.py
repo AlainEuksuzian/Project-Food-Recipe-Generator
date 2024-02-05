@@ -4,6 +4,8 @@ from wtforms.validators import DataRequired
 
 
 
+# The Login class is a FlaskForm that contains fields for username, password, remember me checkbox,
+# and a login button.
 class Login(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -11,6 +13,8 @@ class Login(FlaskForm):
     login_btn = SubmitField('Sign In')
 
 
+# The Signup class is a FlaskForm that contains fields for first name, last name, email, username,
+# password, gender, and a submit button.
 
 class Signup(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
