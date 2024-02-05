@@ -12,7 +12,7 @@ step 2) Randomly get the food recipe, instructions to cook, and a picture of the
 
 step 3) Add a homepage, login page, and other pages to complete a full-stack app  (DONE)
 
-step 4) add SQLite database using upvote and downvote to understand user preference also a user table (ONGOING)
+step 4) add SQLite database using upvote and downvote to understand user preference also a user table (DONE, user table && Meal table with pk fk relation added)
 
 step 6) Add Bootstrap and CSS design to modernize the website
 
