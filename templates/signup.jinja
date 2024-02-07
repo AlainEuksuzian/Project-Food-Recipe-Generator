@@ -5,5 +5,36 @@
 {% block signup %}
 <h1>Sign in</h1>
 
+<form action="" method="POST" novalidate>
+{{form.hidden_tag()}}
+s
+<b>{{form.first_name.label}}</b><br>
+{{form.first_name()}}
+<br><br>
 
-{% endblock signup %}<h1>signup works</h1>
+<b>{{form.last_name.label}}</b><br>
+{{form.last_name()}}
+<br><br>
+
+
+<b>{{form.email.label}}</b><br>
+{{form.email()}}
+<br><br>
+
+<b>{{form.username.label}}</b><br>
+{{form.username()}}
+<br><br>
+
+<b>{{form.password.label}}</b><br>
+{{form.password()}}
+<br><br>
+
+<b>{{form.gender.label}}</b><br>
+{{form.gender()}}
+<br><br>
+
+{{form.sign_btn()}}
+
+</form>
+
+{% endblock signup %}

@@ -1,12 +1,14 @@
-from flask import Flask , render_template, flash, redirect
+from flask import Flask , render_template, flash, redirect, url_for
+from flask_migrate import Migrate
 from forms import Login, Signup
 import pandas as pd
 import requests
 from models import db, Users, Meal
-from flask_migrate import Migrate
+from sqlalchemy.exc import IntegrityError
+
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\Alain E\\Desktop\\helloWorld\\database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/Alain E/Desktop/helloWorld/database.db'
 app.config['SECRET_KEY'] = 'My_food_recipe_app'
 
 db.init_app(app)
@@ -37,9 +39,32 @@ def form_test():
 
 
 
-@app.route('/signup')
+@app.route('/signup', methods=['GET', 'POST'])
 def sign_up():
-    return render_template('signup.jinja')
+    form = Signup()
+    if form.validate_on_submit():
+        f_name = form.first_name.data
+        l_name = form.last_name.data
+        email = form.email.data
+        uname = form.username.data
+        password = form.password.data
+        gender = form.gender.data
+
+        try:
+            u = Users(first_name=f_name, last_name = l_name, email = email, 
+                      username=uname, password = password, gender = gender)
+            
+            db.session.add(u)
+            db.session.commit()
+            return redirect(url_for('home_page'))
+
+        except IntegrityError:
+            flash('An error Occured, cannot add signup data to database')
+            return redirect('formTester')
+    
+
+
+    return render_template('signup.jinja', form=form)
 
 @app.route('/recipe')
 def recipe():
